@@ -17,7 +17,7 @@ const FuncionarioController = {
       if (funcionario) {
         res.json(funcionario);
       } else {
-        res.status(404).json({ message: 'Usuário não encontrado' });
+        res.status(404).json({ message: 'Funcionario não encontrado' });
       }
     } catch (error) {
       res.status(500).json({ message: error.message });
@@ -47,7 +47,7 @@ const FuncionarioController = {
     try {
       req.body.ativo = false;
       await Funcionario.findByIdAndUpdate(req.params.id, req.body, { new: true });
-      res.json({ message: 'Usuário excluído com sucesso' });
+      res.json({ message: 'Funcionario excluído com sucesso' });
     } catch (error) {
       res.status(500).json({ message: error.message });
     }

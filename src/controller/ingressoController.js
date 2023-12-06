@@ -17,7 +17,7 @@ const IngressoController = {
       if (ingresso) {
         res.json(ingresso);
       } else {
-        res.status(404).json({ message: 'Usuário não encontrado' });
+        res.status(404).json({ message: 'Ingresso não encontrado' });
       }
     } catch (error) {
       res.status(500).json({ message: error.message });
@@ -47,7 +47,7 @@ const IngressoController = {
     try {
       req.body.ativo = false;
       await Ingresso.findByIdAndUpdate(req.params.id, req.body, { new: true });
-      res.json({ message: 'Usuário excluído com sucesso' });
+      res.json({ message: 'Ingresso excluído com sucesso' });
     } catch (error) {
       res.status(500).json({ message: error.message });
     }

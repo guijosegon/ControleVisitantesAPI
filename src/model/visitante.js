@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const funcionarioSchema = new mongoose.Schema({
+const visitanteSchema = new mongoose.Schema({
   nome: {
     type: String,
     require: true
@@ -19,10 +19,10 @@ const funcionarioSchema = new mongoose.Schema({
   },
   ativo: {
     type: Boolean,
-    default: ativo
+    default: true
   }
 });
 
-const Funcionario = mongoose.model('Funcionario', funcionarioSchema);
+const Visitante = mongoose.model('Visitante', visitanteSchema);
 
-module.exports = Funcionario;
+module.exports = Visitante;

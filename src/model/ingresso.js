@@ -1,10 +1,22 @@
 const mongoose = require('mongoose');
 
 const ingressoSchema = new mongoose.Schema({
-    descricao: String,
-    valor: Number,
-    dataCadastro: Date,
-    ativo: Boolean
+    descricao: {
+        type: String,
+        require: true
+      },
+    valor: {
+        type: Number,
+        require: true
+      },
+    dataCadastro: {
+        type: Date,
+        default: Date.now
+      },
+      ativo: {
+        type: Boolean,
+        default: ativo
+      }
 });
 
 const Ingresso = mongoose.model('Ingresso', ingressoSchema);

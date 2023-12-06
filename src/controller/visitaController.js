@@ -17,7 +17,7 @@ const VisitaController = {
       if (visita) {
         res.json(visita);
       } else {
-        res.status(404).json({ message: 'Usuário não encontrado' });
+        res.status(404).json({ message: 'Visita não encontrado' });
       }
     } catch (error) {
       res.status(500).json({ message: error.message });
@@ -47,7 +47,7 @@ const VisitaController = {
     try {
       req.body.ativo = false;
       await Visita.findByIdAndUpdate(req.params.id, req.body, { new: true });
-      res.json({ message: 'Usuário excluído com sucesso' });
+      res.json({ message: 'Visita excluído com sucesso' });
     } catch (error) {
       res.status(500).json({ message: error.message });
     }
