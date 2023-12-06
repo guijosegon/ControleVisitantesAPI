@@ -4,7 +4,7 @@ const FuncionarioController = {
 
   getAllFuncionario: async (req, res) => {
     try {
-      const funcionarios = await Funcionario.find({ ativo: true });
+      const funcionarios = await Funcionario.find();
       res.json(funcionarios);
     } catch (funcionarios) {
       res.status(500).json({ message: error.message });

@@ -4,7 +4,7 @@ const IngressoController = {
 
   getAllIngresso: async (req, res) => {
     try {
-      const ingressos = await Ingresso.find({ ativo: true });
+      const ingressos = await Ingresso.find();
       res.json(ingressos);
     } catch (ingressos) {
       res.status(500).json({ message: error.message });

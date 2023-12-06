@@ -4,7 +4,7 @@ const visitanteController = {
 
   getAllVisitante: async (req, res) => {
     try {
-      const visitantes = await Visitante.find({ ativo: true });
+      const visitantes = await Visitante.find();
       res.json(visitantes);
     } catch (visitantes) {
       res.status(500).json({ message: error.message });
