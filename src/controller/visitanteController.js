@@ -36,8 +36,8 @@ const visitanteController = {
 
   updateVisitante: async (req, res) => {
     try {
-      const visitante = await Visitante.findByIdAndUpdate(req.params.id, req.body, { new: true });
-      res.json(visitante);
+      await Visitante.findByIdAndUpdate(req.params.id, req.body, { new: true });
+      res.json({ message: 'Visitante alterado com sucesso' });
     } catch (error) {
       res.status(400).json({ message: error.message });
     }
@@ -45,8 +45,7 @@ const visitanteController = {
 
   deleteVisitante: async (req, res) => {
     try {
-      req.body.ativo = false;
-      await Visitante.findByIdAndUpdate(req.params.id, req.body, { new: true });
+      await Visitante.findByIdAndDelete(req.params.id, req.body, { new: true });
       res.json({ message: 'Visitante excluído com sucesso' });
     } catch (error) {
       res.status(500).json({ message: error.message });

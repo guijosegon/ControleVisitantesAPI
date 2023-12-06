@@ -4,7 +4,7 @@ const VisitaController = {
 
   getAllVisita: async (req, res) => {
     try {
-      const visitas = await Visita.find({ ativo: true });
+      const visitas = await Visita.find().populate('idFuncionario').populate('idVisitante').populate('idIngresso');
       res.json(visitas);
     } catch (visitas) {
       res.status(500).json({ message: error.message });
@@ -13,7 +13,7 @@ const VisitaController = {
 
   getVisitaById: async (req, res) => {
     try {
-      const visita = await Visita.findById(req.params.id);
+      const visita = await Visita.findById(req.params.id).populate('idFuncionario').populate('idVisitante').populate('idIngresso');
       if (visita) {
         res.json(visita);
       } else {
@@ -36,8 +36,8 @@ const VisitaController = {
 
   updateVisita: async (req, res) => {
     try {
-      const visita = await Visita.findByIdAndUpdate(req.params.id, req.body, { new: true });
-      res.json(visita);
+      await Visita.findByIdAndUpdate(req.params.id, req.body, { new: true });
+      res.json({ message: 'Visita alterado com sucesso' });
     } catch (error) {
       res.status(400).json({ message: error.message });
     }
@@ -45,8 +45,7 @@ const VisitaController = {
 
   deleteVisita: async (req, res) => {
     try {
-      req.body.ativo = false;
-      await Visita.findByIdAndUpdate(req.params.id, req.body, { new: true });
+      await Visita.findByIdAndDelete(req.params.id, req.body, { new: true });
       res.json({ message: 'Visita excluído com sucesso' });
     } catch (error) {
       res.status(500).json({ message: error.message });

@@ -36,8 +36,8 @@ const FuncionarioController = {
 
   updateFuncionario: async (req, res) => {
     try {
-      const funcionario = await Funcionario.findByIdAndUpdate(req.params.id, req.body, { new: true });
-      res.json(funcionario);
+      await Funcionario.findByIdAndUpdate(req.params.id, req.body, { new: true });
+      res.json({ message: 'Funcionario alterado com sucesso' });
     } catch (error) {
       res.status(400).json({ message: error.message });
     }
@@ -45,8 +45,7 @@ const FuncionarioController = {
 
   deleteFuncionario: async (req, res) => {
     try {
-      req.body.ativo = false;
-      await Funcionario.findByIdAndUpdate(req.params.id, req.body, { new: true });
+      await Funcionario.findByIdAndDelete(req.params.id, req.body, { new: true });
       res.json({ message: 'Funcionario excluído com sucesso' });
     } catch (error) {
       res.status(500).json({ message: error.message });

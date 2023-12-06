@@ -36,8 +36,8 @@ const IngressoController = {
 
   updateIngresso: async (req, res) => {
     try {
-      const ingresso = await Ingresso.findByIdAndUpdate(req.params.id, req.body, { new: true });
-      res.json(ingresso);
+      await Ingresso.findByIdAndUpdate(req.params.id, req.body, { new: true });
+      res.json({ message: 'Ingresso alterado com sucesso' });
     } catch (error) {
       res.status(400).json({ message: error.message });
     }
@@ -45,8 +45,7 @@ const IngressoController = {
 
   deleteIngresso: async (req, res) => {
     try {
-      req.body.ativo = false;
-      await Ingresso.findByIdAndUpdate(req.params.id, req.body, { new: true });
+      await Ingresso.findByIdAndDelete(req.params.id, req.body, { new: true });
       res.json({ message: 'Ingresso excluído com sucesso' });
     } catch (error) {
       res.status(500).json({ message: error.message });
