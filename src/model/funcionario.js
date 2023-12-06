@@ -19,7 +19,7 @@ const funcionarioSchema = new mongoose.Schema({
   },
   ativo: {
     type: Boolean,
-    default: ativo
+    default: true
   }
 });
 

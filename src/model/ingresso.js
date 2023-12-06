@@ -15,7 +15,7 @@ const ingressoSchema = new mongoose.Schema({
       },
       ativo: {
         type: Boolean,
-        default: ativo
+        default: true
       }
 });
 
